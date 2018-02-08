@@ -50,6 +50,7 @@ function setTopSection() {
 } //end function setTopSection
 
 function setBottomSection() {
+	$returnVal = "";
 	$returnVal .= "</body>\n";
 	$returnVal .= "</html>\n";
 
