@@ -8,7 +8,7 @@
 *
 * Usage:
 *   $page = new Template("My Page");
-*   $page->setHeadSection("<script type='text/javascript' src='hello.js'></script>");
+*   $page->setHeadSection("<script src='hello.js'></script>");
 *   $page->setTopSection();
 *   $page->setBottomSection();
 *
@@ -37,7 +37,7 @@ function setHeadSection($include) {
 function setTopSection() {
 	$returnVal = "";
 	$returnVal .= "<!doctype html>\n";
-	$returnVal .= "<html>\n";
+	$returnVal .= "<html lang=\"en\">\n";
 	$returnVal .= "<head><title>";
 	$returnVal .= $this->_title;
 	$returnVal .= "</title>\n";

@@ -3,7 +3,7 @@
 require_once("Template.php");
 
 $page = new Template("My Page");
-$page->setHeadSection("<script type='text/javascript' src='hello.js'></script>");
+$page->setHeadSection("<script src='hello.js'></script>");
 $page->setTopSection();
 $page->setBottomSection();
 
