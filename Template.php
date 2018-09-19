@@ -4,7 +4,10 @@
 *
 * Template class
 * 
-* Used to create multiple unique HTML pages
+* Used to create multiple unique HTML pages.
+*
+* Always call "set" methods before calling any "get" methods,
+* as in the example here:
 *
 * Usage:
 *   $page = new Template("My Page");
@@ -29,6 +32,21 @@ class Template {
 function __construct($title = "Default") {
 	$this->_title = $title;
 }
+
+/**
+* function setHeadSection($include)
+*
+* Used to add things to the <head> section of an HTML doc.
+* For example, it is typical to add CSS <link> tags
+* and <script> tags in the <head> section.
+*
+* This must be called __before__ setTopSection and
+* will typically be called once for each <link> or <script>
+* that will appear in the <head> section.
+*
+*
+* @param string $include  The element to include
+*/
 
 function setHeadSection($include) {
   $this->_headSection .= $include . "\n";
