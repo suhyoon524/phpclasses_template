@@ -3,9 +3,9 @@
 require_once("Template.php");
 
 $page = new Template("My Page");
-$page->setHeadSection("<script src='hello.js'></script>");
-$page->setTopSection();
-$page->setBottomSection();
+$page->addHeadElement("<script src='hello.js'></script>");
+$page->finalizeTopSection();
+$page->finalizeBottomSection();
 
 print $page->getTopSection();
 print "<h1>Some page-specific HTML goes here</h1>\n";

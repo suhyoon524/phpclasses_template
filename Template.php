@@ -11,9 +11,9 @@
 *
 * Usage:
 *   $page = new Template("My Page");
-*   $page->setHeadSection("<script src='hello.js'></script>");
-*   $page->setTopSection();
-*   $page->setBottomSection();
+*   $page->addHeadElement("<script src='hello.js'></script>");
+*   $page->finalizeTopSection();
+*   $page->finalizeBottomSection();
 *
 *   print $page->getTopSection();
 *   print "<h1>Some page-specific HTML goes here</h1>\n";
@@ -34,13 +34,13 @@ function __construct($title = "Default") {
 }
 
 /**
-* function setHeadSection($include)
+* function addHeadElement($include)
 *
 * Used to add things to the <head> section of an HTML doc.
 * For example, it is typical to add CSS <link> tags
 * and <script> tags in the <head> section.
 *
-* This must be called __before__ setTopSection and
+* This must be called __before__ finalizeTopSection and
 * will typically be called once for each <link> or <script>
 * that will appear in the <head> section.
 *
@@ -48,11 +48,11 @@ function __construct($title = "Default") {
 * @param string $include  The element to include
 */
 
-function setHeadSection($include) {
+function addHeadElement($include) {
   $this->_headSection .= $include . "\n";
-} //end function setHeadSection
+} //end function addHeadElement
 
-function setTopSection() {
+function finalizeTopSection() {
 	$returnVal = "";
 	$returnVal .= "<!doctype html>\n";
 	$returnVal .= "<html lang=\"en\">\n";
@@ -65,16 +65,16 @@ function setTopSection() {
 
 	$this->_top = $returnVal;
 
-} //end function setTopSection
+} //end function finalizeTopSection
 
-function setBottomSection() {
+function finalizeBottomSection() {
 	$returnVal = "";
 	$returnVal .= "</body>\n";
 	$returnVal .= "</html>\n";
 
 	$this->_bottom = $returnVal;
 
-} //end function setBottomSection
+} //end function finalizeBottomSection
 
 function getTopSection() {
 	return $this->_top;
