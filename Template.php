@@ -28,6 +28,7 @@ class Template {
 	private $_bottom;
   private $_title;
   private $_headSection = "";
+  private $_bottomSection = "";
 
 function __construct($title = "Default") {
 	$this->_title = $title;
@@ -67,8 +68,29 @@ function finalizeTopSection() {
 
 } //end function finalizeTopSection
 
+/**
+* function addBottomElement($include)
+*
+* Used to add things to the bottom section of an HTML doc.
+* For example, some libraries require JavaScript right 
+* before the closing </body> tag.
+*
+* This must be called __before__ finalizeBottomSection and
+* will typically be called once for each <script>
+* that will appear in the section.
+*
+*
+* @param string $include  The element to include
+*/
+
+function addBottomElement($include) {
+  $this->_bottomSection .= $include . "\n";
+} //end function addHeadElement
+
+
 function finalizeBottomSection() {
 	$returnVal = "";
+  $returnVal .= $this->_bottomSection;
 	$returnVal .= "</body>\n";
 	$returnVal .= "</html>\n";
 
