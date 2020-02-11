@@ -24,11 +24,11 @@
 
 class Template {
 
-	private $_top;
-	private $_bottom;
-  private $_title;
-  private $_headSection = "";
-  private $_bottomSection = "";
+	protected $_top;
+	protected $_bottom;
+  protected $_title;
+  protected $_headSection = "";
+  protected $_bottomSection = "";
 
 function __construct($title = "Default") {
 	$this->_title = $title;
